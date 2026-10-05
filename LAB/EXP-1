@@ -1,0 +1,51 @@
+#include <stdio.h>
+            while (isalnum((unsigned char)str[i]) || str[i] == '_')
+            {
+                identifiers[ic][k++] = str[i];
+                i++;
+            }
+
+            identifiers[ic][k] = '\0';
+            ic++;
+        }
+        else if (isdigit((unsigned char)str[i]))
+        {
+            int num = 0;
+
+            while (isdigit((unsigned char)str[i]))
+            {
+                num = num * 10 + (str[i] - '0');
+                i++;
+            }
+
+            constants[cc++] = num;
+        }
+        else if (str[i] == '+' || str[i] == '-' ||
+                 str[i] == '*' || str[i] == '/' ||
+                 str[i] == '=')
+        {
+            operators[oc++] = str[i];
+            i++;
+        }
+        else
+        {
+            i++;
+        }
+    }
+
+    printf("\nIdentifiers : ");
+    for (j = 0; j < ic; j++)
+        printf("%s ", identifiers[j]);
+
+    printf("\nConstants   : ");
+    for (j = 0; j < cc; j++)
+        printf("%d ", constants[j]);
+
+    printf("\nOperators   : ");
+    for (j = 0; j < oc; j++)
+        printf("%c ", operators[j]);
+
+    printf("\n");
+
+    return 0;
+}
